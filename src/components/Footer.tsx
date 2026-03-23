@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
-import { Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import BtnLogo from "@/components/BtnLogo";
 
-const navLinksCol1 = [
-  { label: "Home", path: "/" },
+const navLinks = [
   { label: "What We Do", path: "/what-we-do" },
   { label: "Projects", path: "/projects" },
   { label: "Our Process", path: "/our-process" },
-];
-
-const navLinksCol2 = [
   { label: "Ecosystem", path: "/ecosystem" },
   { label: "About BTN", path: "/about" },
   { label: "Resources", path: "/resources" },
@@ -23,10 +19,25 @@ const legalLinks = [
 ];
 
 const Footer = () => (
-  <footer className="gradient-navy text-primary-foreground">
-    <div className="container mx-auto px-6 pt-16 pb-8">
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
-        {/* Col 1 – Brand */}
+  <footer className="bg-[hsl(216_80%_10%)] text-primary-foreground">
+    {/* Mini CTA strip */}
+    <div className="border-b border-white/[0.06]">
+      <div className="container mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <p className="text-white/70 font-bold text-lg text-center sm:text-left">
+          Ready to unlock your site's hospitality value?
+        </p>
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-accent-foreground font-bold uppercase tracking-wide rounded-lg hover:shadow-[0_4px_16px_-4px_hsl(var(--accent)/0.4)] transition-all duration-200 active:scale-[0.97] text-sm shrink-0"
+        >
+          Evaluate Your Site <ArrowRight size={16} />
+        </Link>
+      </div>
+    </div>
+
+    <div className="container mx-auto px-6 pt-12 pb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {/* Brand */}
         <div className="col-span-2 lg:col-span-1">
           <div className="mb-5 brightness-0 invert opacity-90">
             <BtnLogo height={36} />
@@ -36,14 +47,11 @@ const Footer = () => (
           </p>
         </div>
 
-        {/* Col 2 – Spacer (hidden on mobile) */}
-        <div className="hidden lg:block" />
-
-        {/* Col 3 – Navigate A */}
+        {/* Navigate */}
         <div>
           <h4 className="font-bold text-xs uppercase tracking-widest mb-5 text-accent">Navigate</h4>
           <nav className="flex flex-col gap-3">
-            {navLinksCol1.map((l) => (
+            {navLinks.map((l) => (
               <Link
                 key={l.label}
                 to={l.path}
@@ -55,23 +63,7 @@ const Footer = () => (
           </nav>
         </div>
 
-        {/* Col 4 – Navigate B */}
-        <div>
-          <h4 className="font-bold text-xs uppercase tracking-widest mb-5 text-accent">&nbsp;</h4>
-          <nav className="flex flex-col gap-3">
-            {navLinksCol2.map((l) => (
-              <Link
-                key={l.label}
-                to={l.path}
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        {/* Col 5 – Contact */}
+        {/* Contact */}
         <div>
           <h4 className="font-bold text-xs uppercase tracking-widest mb-5 text-accent">Contact</h4>
           <div className="flex flex-col gap-3 text-sm text-primary-foreground/60">
